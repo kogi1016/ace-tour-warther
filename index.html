@@ -11,14 +11,10 @@
   :root {
     --bg:    #0a1628;
     --card:  #0f1e35;
-    --card2: #13243e;
     --border:#1e3356;
     --text:  #e8f0fc;
     --sub:   #7a9bc4;
     --gold:  #f5c842;
-    --cyan:  #4fc8e8;
-    --rust:  #e8714a;
-    --green: #4ecb8d;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--bg);color:var(--text);font-family:"Noto Sans KR",sans-serif;min-height:100vh;padding-bottom:40px;}
@@ -33,37 +29,48 @@
 
   .wrap{padding:16px;max-width:640px;margin:0 auto;}
 
-  .monsoon-alert{background:linear-gradient(135deg,rgba(232,113,74,0.15),rgba(232,113,74,0.05));border:1px solid rgba(232,113,74,0.4);border-radius:14px;padding:14px 16px;margin-bottom:16px;}
-  .monsoon-title{font-size:13px;font-weight:700;color:var(--rust);margin-bottom:6px;}
+  .monsoon-alert{background:linear-gradient(135deg,rgba(232,113,74,0.15),rgba(232,113,74,0.05));border:1px solid rgba(232,113,74,0.4);border-radius:14px;padding:14px 16px;margin-bottom:18px;}
+  .monsoon-title{font-size:13px;font-weight:700;color:#e8714a;margin-bottom:6px;}
   .monsoon-text{font-size:12.5px;color:#d8b8a8;line-height:1.8;}
 
-  .day-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:12px;}
-  .day-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
-  .day-badge{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:6px 12px;text-align:center;min-width:56px;}
+  /* 지역 테마 컬러 day-card */
+  .day-card{border-radius:16px;padding:16px;margin-bottom:14px;position:relative;overflow:hidden;border:1px solid var(--card-border);background:var(--card-bg);}
+  .day-card::before{content:"";position:absolute;top:0;left:0;width:5px;height:100%;background:var(--accent);}
+
+  .day-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-left:6px;}
+  .day-badge{background:rgba(255,255,255,0.08);border:1px solid var(--card-border);border-radius:10px;padding:6px 12px;text-align:center;min-width:56px;}
   .day-dow{font-size:11px;color:var(--sub);font-weight:600;}
-  .day-date{font-family:"Poppins",sans-serif;font-size:14px;font-weight:700;color:var(--gold);}
+  .day-date{font-family:"Poppins",sans-serif;font-size:14px;font-weight:700;color:var(--accent-text);}
   .day-title{font-size:15px;font-weight:700;color:var(--text);}
   .day-sub{font-size:11.5px;color:var(--sub);margin-top:2px;}
 
-  .wc-row{display:flex;align-items:center;gap:12px;background:var(--card2);border-radius:10px;padding:10px 12px;margin-bottom:8px;}
+  .wc-row{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,0.18);border-radius:10px;padding:10px 12px;margin-bottom:8px;margin-left:6px;}
   .wc-row:last-of-type{margin-bottom:0;}
   .wc-loc{flex:1;font-size:13px;font-weight:600;color:var(--text);}
   .wc-loc-sub{font-size:10.5px;color:var(--sub);font-weight:400;margin-top:1px;}
   .wc-temp{font-family:"Poppins",sans-serif;font-size:16px;font-weight:700;white-space:nowrap;}
-  .wc-temp .low{color:var(--cyan);}
-  .wc-temp .high{color:var(--rust);}
+  .wc-temp .low{color:#7dd3fc;}
+  .wc-temp .high{color:#fb923c;}
   .wc-desc{font-size:11px;color:var(--sub);white-space:nowrap;min-width:80px;text-align:right;}
 
-  .tip{margin-top:10px;font-size:12px;color:#c8d8f0;line-height:1.7;padding-top:10px;border-top:1px dashed var(--border);}
-  .tip b{color:var(--gold);}
+  .tip{margin-top:10px;margin-left:6px;font-size:12px;color:#d8e4f8;line-height:1.7;padding-top:10px;border-top:1px dashed var(--card-border);}
+  .tip b{color:var(--accent-text);}
+
+  /* 지역별 색상 정의 */
+  .theme-sf{--accent:#4fc8e8;--accent-text:#7dd8f0;--card-bg:linear-gradient(135deg,rgba(79,200,232,0.12),rgba(79,200,232,0.03));--card-border:rgba(79,200,232,0.3);}
+  .theme-yosemite{--accent:#4ecb8d;--accent-text:#6ee0a8;--card-bg:linear-gradient(135deg,rgba(78,203,141,0.12),rgba(78,203,141,0.03));--card-border:rgba(78,203,141,0.3);}
+  .theme-vegas{--accent:#c15fe8;--accent-text:#d98ff0;--card-bg:linear-gradient(135deg,rgba(193,95,232,0.15),rgba(232,80,190,0.04));--card-border:rgba(193,95,232,0.35);}
+  .theme-canyon{--accent:#e8714a;--accent-text:#f0a888;--card-bg:linear-gradient(135deg,rgba(232,113,74,0.13),rgba(232,113,74,0.03));--card-border:rgba(232,113,74,0.3);}
+  .theme-canyon2{--accent:#d9a441;--accent-text:#f0c878;--card-bg:linear-gradient(135deg,rgba(217,164,65,0.13),rgba(217,164,65,0.03));--card-border:rgba(217,164,65,0.3);}
+  .theme-la{--accent:#5a7bd8;--accent-text:#8fa8ec;--card-bg:linear-gradient(135deg,rgba(90,123,216,0.13),rgba(90,123,216,0.03));--card-border:rgba(90,123,216,0.3);}
 
   .essentials{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;margin-top:8px;margin-bottom:16px;}
   .essentials-title{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:10px;}
   .ess-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  .ess-item{font-size:12px;color:var(--text);background:var(--card2);border-radius:8px;padding:8px 10px;}
+  .ess-item{font-size:12px;color:var(--text);background:#13243e;border-radius:8px;padding:8px 10px;}
 
   .footer{text-align:center;padding:16px;font-size:11.5px;color:var(--sub);line-height:1.9;}
-  .footer b{color:var(--cyan);}
+  .footer b{color:#4fc8e8;}
 </style>
 </head>
 <body>
@@ -73,7 +80,7 @@
   <div class="header-title">85기 <em>일정별 날씨 안내</em></div>
   <div class="header-sub">8월 7일(금) ~ 8월 15일(토) · 실시간 예보 기준</div>
   <div class="route">샌프란시스코 → 요세미티 → 라스베가스 → 그랜드캐년 → 브라이스·자이언 → LA</div>
-  <div class="update-note">최신 예보 업데이트: 2026년 8월 2일 기준</div>
+  <div class="update-note">최신 예보 업데이트: 2026년 8월 6일 기준</div>
 </div>
 
 <div class="wrap">
@@ -86,8 +93,8 @@
     </div>
   </div>
 
-  <!-- Day1-2 SF -->
-  <div class="day-card">
+  <!-- Day1-2 SF : 블루/시안 (바다·안개) -->
+  <div class="day-card theme-sf">
     <div class="day-head">
       <div class="day-badge"><div class="day-dow">금·토</div><div class="day-date">8/7~8</div></div>
       <div>
@@ -105,8 +112,8 @@
     </div>
   </div>
 
-  <!-- Day3 Yosemite -->
-  <div class="day-card">
+  <!-- Day3 Yosemite : 포레스트 그린 -->
+  <div class="day-card theme-yosemite">
     <div class="day-head">
       <div class="day-badge"><div class="day-dow">일</div><div class="day-date">8/9</div></div>
       <div>
@@ -129,8 +136,8 @@
     </div>
   </div>
 
-  <!-- Day4 Vegas -->
-  <div class="day-card">
+  <!-- Day4 Vegas : 퍼플/네온 -->
+  <div class="day-card theme-vegas">
     <div class="day-head">
       <div class="day-badge"><div class="day-dow">월</div><div class="day-date">8/10</div></div>
       <div>
@@ -141,15 +148,15 @@
     <div class="wc-row">
       <div class="wc-loc">라스베가스</div>
       <div class="wc-temp"><span class="low">30°</span> / <span class="high">40°</span>C</div>
-      <div class="wc-desc">🌦 소나기 가능 (35%)</div>
+      <div class="wc-desc">☀️ 맑음 (강수 5%)</div>
     </div>
     <div class="tip">
       <b>패션 팁</b> · 극심한 사막 폭염 구간입니다. 통풍 잘 되는 얇은 소재, 챙 넓은 모자, 선글라스 필수. 이번 주는 강수확률이 다소 높으니(35%) 우산을 챙기면 좋습니다. 실내(호텔·카지노)는 냉방이 매우 강하니 걸칠 얇은 겉옷도 하나 챙기세요.
     </div>
   </div>
 
-  <!-- Day5 Grand Canyon -->
-  <div class="day-card">
+  <!-- Day5 Grand Canyon : 테라코타 -->
+  <div class="day-card theme-canyon">
     <div class="day-head">
       <div class="day-badge"><div class="day-dow">화</div><div class="day-date">8/11</div></div>
       <div>
@@ -160,12 +167,12 @@
     <div class="wc-row">
       <div class="wc-loc">그랜드캐년<div class="wc-loc-sub">사우스림</div></div>
       <div class="wc-temp"><span class="low">15°</span> / <span class="high">28°</span>C</div>
-      <div class="wc-desc">🌦 소나기 가능 (25%)</div>
+      <div class="wc-desc">🌦 소나기 가능 (35%)</div>
     </div>
     <div class="wc-row">
       <div class="wc-loc">앤텔롭캐년<div class="wc-loc-sub">페이지 지역 · 오후</div></div>
-      <div class="wc-temp"><span class="low">24°</span> / <span class="high">36°</span>C</div>
-      <div class="wc-desc">⛅ 대체로 맑음</div>
+      <div class="wc-temp"><span class="low">24°</span> / <span class="high">35°</span>C</div>
+      <div class="wc-desc">🌦 소나기 가능 (20%)</div>
     </div>
     <div class="tip">
       <b>패션 팁</b> · 협곡 내부는 햇빛을 그대로 받아 체감온도가 더 높습니다. 긴팔 아쿠아 소재 옷이 자외선 차단에 효과적이며, 물 1L 이상 개인 지참을 권장합니다.<br>
@@ -173,8 +180,8 @@
     </div>
   </div>
 
-  <!-- Day6 Bryce/Zion -->
-  <div class="day-card">
+  <!-- Day6 Bryce/Zion : 골드/샌드 (다른 캐년 톤) -->
+  <div class="day-card theme-canyon2">
     <div class="day-head">
       <div class="day-badge"><div class="day-dow">수</div><div class="day-date">8/12</div></div>
       <div>
@@ -184,21 +191,26 @@
     </div>
     <div class="wc-row">
       <div class="wc-loc">브라이스캐년<div class="wc-loc-sub">오전 · 고지대</div></div>
-      <div class="wc-temp"><span class="low">12°</span> / <span class="high">23°</span>C</div>
-      <div class="wc-desc">🌦 소나기 가능 (40%)</div>
+      <div class="wc-temp"><span class="low">12°</span> / <span class="high">22°</span>C</div>
+      <div class="wc-desc">🌧 강수확률 65% ⚠️</div>
     </div>
     <div class="wc-row">
       <div class="wc-loc">자이언캐년<div class="wc-loc-sub">낮</div></div>
       <div class="wc-temp"><span class="low">17°</span> / <span class="high">28°</span>C</div>
-      <div class="wc-desc">⛅ 대체로 맑음</div>
+      <div class="wc-desc">🌦 소나기 가능 (35%)</div>
+    </div>
+    <div class="wc-row">
+      <div class="wc-loc">라스베가스<div class="wc-loc-sub">저녁 도착 · 숙박</div></div>
+      <div class="wc-temp"><span class="low">24°</span> / <span class="high">35°</span>C</div>
+      <div class="wc-desc">🌦 소나기 가능 (20%)</div>
     </div>
     <div class="tip">
-      <b>패션 팁</b> · 새벽 픽업 시 브라이스캐년은 고지대(해발 2,400m)라 아침 기온이 낮아 매우 쌀쌀합니다. 방한용 겉옷을 꼭 챙기고, 낮이 되면 기온이 오르니 벗어서 수납하기 쉬운 레이어드 복장을 추천합니다. 오전 소나기 가능성(40%)도 있으니 우산 지참하세요.
+      <b>패션 팁</b> · 새벽 픽업 시 브라이스캐년은 고지대(해발 2,400m)라 아침 기온이 낮아 매우 쌀쌀합니다. 방한용 겉옷을 꼭 챙기고, 낮이 되면 기온이 오르니 벗어서 수납하기 쉬운 레이어드 복장을 추천합니다. <b style="color:#f0c878;">이날 강수확률이 65%로 매우 높으니</b> 우산·방수재킷을 꼭 지참하세요.
     </div>
   </div>
 
-  <!-- Day7-9 LA -->
-  <div class="day-card">
+  <!-- Day7-9 LA : 딥 네이비 -->
+  <div class="day-card theme-la">
     <div class="day-head">
       <div class="day-badge"><div class="day-dow">목~토</div><div class="day-date">8/13~15</div></div>
       <div>
@@ -237,7 +249,7 @@
 <div class="footer">
   ✈ 에이스투어와 함께하는 특별한 여행을 응원합니다!<br>
   <b>실시간 예보 기준 · 출발 전날 재확인 권장 🙏</b><br>
-  담당 가이드: <b>제이팀장 / K가이드</b><br><br>
+  담당 가이드: <b>제이팀장</b><br><br>
   ACE TOURS · 85기 세미패키지
 </div>
 
